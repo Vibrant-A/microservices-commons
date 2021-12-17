@@ -1,3 +1,3 @@
-export interface testDTO {
+export class testGenerated {
   exists: boolean;
 }
