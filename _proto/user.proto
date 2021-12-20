@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package users;
+
+import "_proto/commons.proto";
+
+message User {
+  /**
+   * The user id
+   * @example 10
+   * @Min 1
+   * @Max 1000
+   */
+  int64 userId = 1;
+  string emailId = 2;
+  string firstName = 3;
+  string lastName = 4;
+}
+
+message UserInfoList {
+  repeated User users = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+service UserService {
+  rpc create(User) returns (Status) {}
+}
