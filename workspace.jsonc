@@ -36,9 +36,15 @@
     /**
      * choose the package manager for Bit to use. you can choose between 'yarn', 'pnpm'
      */
+    "devFilePatterns": ["*.ts"],
     "packageManager": "teambit.dependencies/pnpm",
     "policy": {
-      "dependencies": {},
+      "dependencies": {
+        "@grpc/grpc-js": "1.4.5",
+        "@nestjs/microservices": "8.2.4",
+        "@nestjs/swagger": "5.1.5",
+        "class-validator": "0.13.2"
+      },
       "peerDependencies": {}
     }
   },
@@ -60,10 +66,7 @@
       // "teambit.react/react": { }
     },
     "_proto": {
-      "teambit.harmony/node":{}
-    },
-    "generated": {
-      "teambit.harmony/node":{}
+      "teambit.harmony/node": {}
     },
     "global": {
       "teambit.harmony/aspect": {}

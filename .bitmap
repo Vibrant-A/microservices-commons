@@ -11,20 +11,14 @@
 {
     "_proto": {
         "scope": "vibrant-america.phlebotomy-shared-types",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "test.proto",
         "rootDir": "_proto"
     },
-    "generated": {
-        "scope": "vibrant-america.phlebotomy-shared-types",
-        "version": "0.0.1",
-        "mainFile": "typescript/test.ts",
-        "rootDir": "generated"
-    },
     "global": {
         "scope": "vibrant-america.phlebotomy-shared-types",
-        "version": "0.0.1",
-        "mainFile": "test.dto.ts",
+        "version": "0.0.5",
+        "mainFile": "objects/commons.dto.ts",
         "rootDir": "global"
     },
     "$schema-version": "14.9.0"

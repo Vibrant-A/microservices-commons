@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package kitStatus;  // to prevent name clashes between protocol message types.
+
+service KitTrackingService {
+  rpc GetTrackingData (GetTrackingDataInputParam) returns (SampleKitTrackingDeliveryDto) {};
+  rpc GetSampleKitData (GetTrackingDataInputParam) returns (SampleKitTrackingDto) {};
+}
+
+message GetTrackingDataInputParam {
+  int32 customer_id = 1;
+  int32 sample_id = 2;
+}
+
+message SampleTubeTrackingInfoList {
+  string tube_type = 1;
+  int32 required_tube_count = 2;
+  int32 request_tube_count = 3;
+  int32 received_tube_count = 4;
+  string handle_by = 5;
+  string request_at = 6;
+  string received_at = 7;
+  string shipout_at = 8;
+  string tube_status = 9;
+  string comments = 10;
+  string tube_result_turnarond_date = 11;
+}
+
+enum CurrentStatusString {
+    REQUESTED = 0;
+    SHIPPED = 1;
+    RECEIVED = 2;
+    RECEIVED_REPORT = 3;
+}
+
+message SampleKitTrackingDto {
+  CurrentStatusString current_status_string = 1;
+  repeated int32 enable_status_icon_indexes = 2;
+  string sample_result_turnaround_date = 3;
+  repeated SampleTubeTrackingInfoList sample_tube_tracking_info_lists = 4;
+}
+
+message KitTrackingId {
+  string tracking_id = 1;
+  string tracking_uRL = 2;
+}
+
+message SampleShippingEmailDB {
+  int32 id = 1;
+  string po_num = 2;
+  string julien_barcode = 3;
+  string tracking_id = 4;
+  string created_at = 5;
+  string sent_email_address = 6;
+  string email_sent_at = 7;
+  bool email_sent = 8;
+  string email_type = 9;
+}
+
+message SampleKitTrackingDeliveryDto {
+  string customer_name = 1;
+  string customer_street = 2;
+  string customer_city = 3;
+  string customer_zipcode = 4;
+  string customer_state = 5;
+  string customer_country = 6;
+  bool notification_email_sent = 7;
+  string notification_email_address = 8;
+  string sendout_time = 9;
+  repeated KitTrackingId sendout_tracking_ids = 10;
+  repeated KitTrackingId return_tracking_ids = 11;
+  SampleShippingEmailDB sample_shipping_email_dB = 12;
+  SampleKitRequest sample_kit_request = 13;
+}
+
+message SampleKitRequest {
+  int32 id = 1;
+  int32 sample = 2;
+  string kit_request_status = 3;
+  repeated KitTrackingId send_tracking_ids = 4;
+  repeated KitTrackingId return_tracking_ids = 5;
+  string request_time = 6;
+  bool paid = 7;
+  bool cancelled = 8;
+}
